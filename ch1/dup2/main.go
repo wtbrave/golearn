@@ -15,7 +15,7 @@ func main() {
 		for _, arg := range files {
 			f, err := os.Open(arg)
 			if err != nil {
-				fmt.Fprintf(os.Stderr, "dup2: %v\n", err)
+				fmt.Fprintln(os.Stderr, "dup2: %v\n", err)
 				continue
 			}
 
@@ -26,14 +26,17 @@ func main() {
 
 	for line, n := range counts {
 		if n > 1 {
+			fmt.Println(line)
 			fmt.Printf("%d\t%s\n", n, line)
 		}
 	}
 }
 
 func countLines (f *os.File, counts map[string]int) {
+	//fmt.Print(f);
 	input :=bufio.NewScanner(f)
 	for input.Scan() {
+		fmt.Printf("%d\t%s\n", input.Bytes(),input.Text());
 		counts[input.Text()]++
 	}
 }
