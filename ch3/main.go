@@ -8,4 +8,6 @@ import (
 func main() {
 	fmt.Println(testint.Division01())
 	fmt.Println(testint.Division02())
+	testint.Plus()
+	testint.BitOperate()
 }
